@@ -1,0 +1,22 @@
+
+;; ----- smex-history -----
+(
+ aggressive-indent-mode
+ indent-region
+ indent-to
+ indent-rigidly
+ org-indent-mode
+ server-start
+ indent-according-to-mode
+)
+
+;; ----- smex-data -----
+(
+ (indent-according-to-mode . 1)
+ (server-start . 1)
+ (org-indent-mode . 2)
+ (indent-rigidly . 1)
+ (indent-to . 1)
+ (indent-region . 2)
+ (aggressive-indent-mode . 1)
+)
