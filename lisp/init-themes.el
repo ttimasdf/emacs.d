@@ -3,7 +3,9 @@
 
 (require-package 'color-theme-sanityinc-solarized)
 (require-package 'color-theme-sanityinc-tomorrow)
-
+;;; Add support for powerline.
+(require-package 'powerline)
+(powerline-center-theme)
 ;;------------------------------------------------------------------------------
 ;; Old-style color theming support (via color-theme.el)
 ;;------------------------------------------------------------------------------
@@ -73,3 +75,4 @@ ignored: use `custom-enabled-themes' instead."
 
 
 (provide 'init-themes)
+;;; init-themes.el ends here
