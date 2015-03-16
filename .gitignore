@@ -1,8 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ido.last
 recentf
 =======
 >>>>>>> 6483bfd... # This is a combination of 2 commits.
+=======
+ido.last
+recentf
+>>>>>>> bf988be... No desktop. Change default theme. Add powerline.
 /url/cache
 /.emacs.desktop
 /auto-save-list
