@@ -1,10 +1,14 @@
 ;; save a list of open files in ~/.emacs.d/.emacs.desktop
 (setq desktop-path (list user-emacs-directory)
       desktop-auto-save-timeout 600)
+<<<<<<< HEAD
 (desktop-save-mode 0)
 (defadvice desktop-read (around trace-desktop-errors activate)
   (let ((debug-on-error t))
     ad-do-it))
+=======
+(desktop-save-mode 1)
+>>>>>>> b8d9a8e... Don't debug on session restore error
 
 (defadvice desktop-read (around time-restore activate)
   (let ((start-time (current-time)))
