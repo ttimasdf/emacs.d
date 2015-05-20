@@ -1,25 +1,10 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 ido.last
 recentf
-=======
->>>>>>> 6483bfd... # This is a combination of 2 commits.
-=======
-ido.last
-recentf
->>>>>>> bf988be... No desktop. Change default theme. Add powerline.
 /url/cache
 /.emacs.desktop
 /auto-save-list
 /.session
-<<<<<<< HEAD
-<<<<<<< HEAD
 /session.*
-=======
->>>>>>> 6483bfd... # This is a combination of 2 commits.
-=======
-/session.*
->>>>>>> 881f541... Freemind Support
 /custom.el
 *.elc
 CVS
@@ -53,11 +38,6 @@ site-lisp/package/
 /eshell
 /.cask/
 /.sx/
-<<<<<<< HEAD
-<<<<<<< HEAD
+/.smex-items
 /org-clock-save.el
-=======
->>>>>>> 6483bfd... # This is a combination of 2 commits.
-=======
-/org-clock-save.el
->>>>>>> 881f541... Freemind Support
+/agenda_files

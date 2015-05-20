@@ -13,6 +13,8 @@
 
 ;; Various preferences
 (setq org-log-done t
+      org-agenda-files "~/.emacs.d/agenda_files"
+      org-agenda-skip-unavailable-files t
       org-completion-use-ido t
       org-edit-timestamp-down-means-later t
       org-archive-mark-done nil
