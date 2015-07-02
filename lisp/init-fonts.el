@@ -18,6 +18,11 @@
 (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
 (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+                    charset (font-spec :family "STHeiti")))
+(setq face-font-rescale-alist '(("STHeiti" . 1.2)))
+;;; (setq face-font-rescale-alist '(("Menlo" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))
 
 
 (provide 'init-fonts)
