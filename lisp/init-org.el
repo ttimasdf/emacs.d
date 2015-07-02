@@ -10,7 +10,10 @@
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
-
+(setq org-modules
+      (quote
+       (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-bullets org-checklist org-expiry))
+      )
 ;; Various preferences
 (setq org-log-done t
       org-agenda-files "~/.emacs.d/agenda_files"
@@ -134,13 +137,14 @@ typical word processor."
 ;;; To-do settings
 
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+      (quote ((sequence "TODO(t)" "NEXT(n)" "APPT(a)" "|")
               (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
               (sequence "WAITING(w@/!)" "HOLD(h)" "|" "CANCELLED(c@/!)"))))
 
 (setq org-todo-keyword-faces
       (quote (("NEXT" :inherit warning)
-              ("PROJECT" :inherit font-lock-string-face))))
+              ("PROJECT" :inherit font-lock-string-face)
+              ("APPT" :inherit warning))))
 
 
 
@@ -154,6 +158,8 @@ typical word processor."
 
   (setq org-agenda-compact-blocks t
         org-agenda-sticky t
+        org-agenda-todo-list-sublevels nil
+        org-agenda-overriding-columns-format "%60ITEM(Details) %TAGS(Context) %7TODO(To Do) %5Effort(Time){:} %6CLOCKSUM"
         org-agenda-start-on-weekday nil
         org-agenda-span 'day
         org-agenda-include-diary nil
@@ -167,6 +173,13 @@ typical word processor."
         `(("N" "Notes" tags "NOTE"
            ((org-agenda-overriding-header "Notes")
             (org-tags-match-list-sublevels t)))
+          ("D" "Daily Action List"
+           (
+            (agenda "" ((org-agenda-ndays 1)
+                        (org-agenda-sorting-strategy
+                         (quote ((agenda time-up priority-down tag-up) )))
+                        (org-deadline-warning-days 0)
+                        ))))
           ("g" "GTD"
            ((agenda "" nil)
             (tags "INBOX"
@@ -194,7 +207,7 @@ typical word processor."
                        ((org-agenda-overriding-header "Orphaned Tasks")
                         (org-agenda-tags-todo-honor-ignore-options t)
                         (org-agenda-todo-ignore-scheduled 'future)
-                        ;; TODO: skip if a parent is a project
+                        ;; TODO: skip if a parenta is a project
                         (org-agenda-skip-function
                          '(lambda ()
                             (or (org-agenda-skip-subtree-if 'todo '("PROJECT" "HOLD" "WAITING"))
@@ -202,8 +215,15 @@ typical word processor."
                         (org-tags-match-list-sublevels t)
                         (org-agenda-sorting-strategy
                          '(category-keep))))
+
             (tags-todo "/WAITING"
                        ((org-agenda-overriding-header "Waiting")
+                        (org-agenda-tags-todo-honor-ignore-options t)
+                        (org-agenda-todo-ignore-scheduled 'future)
+                        (org-agenda-sorting-strategy
+                         '(category-keep))))
+            (tags-todo "/APPT/DEFERED"
+                       ((org-agenda-overriding-header "Appointment")
                         (org-agenda-tags-todo-honor-ignore-options t)
                         (org-agenda-todo-ignore-scheduled 'future)
                         (org-agenda-sorting-strategy
@@ -324,6 +344,7 @@ typical word processor."
 
 (after-load 'org
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)
+  (define-key org-mode-map (kbd "C-c >") 'org-time-stamp-inactive)
   (when *is-a-mac*
     (define-key org-mode-map (kbd "M-h") nil)
     (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
