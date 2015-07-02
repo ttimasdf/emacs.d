@@ -41,3 +41,5 @@ site-lisp/package/
 /.smex-items
 /org-clock-save.el
 /agenda_files
+.DS_Store
+/notes
