@@ -7,6 +7,7 @@
   (require-package 'org-mac-iCal))
 
 (require 'ox-freemind_amt)
+(require 'ox-odt_amt)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
@@ -207,7 +208,7 @@ typical word processor."
                        ((org-agenda-overriding-header "Orphaned Tasks")
                         (org-agenda-tags-todo-honor-ignore-options t)
                         (org-agenda-todo-ignore-scheduled 'future)
-                        ;; TODO: skip if a parenta is a project
+                        ;; TODO: skip if a parent is a project
                         (org-agenda-skip-function
                          '(lambda ()
                             (or (org-agenda-skip-subtree-if 'todo '("PROJECT" "HOLD" "WAITING"))

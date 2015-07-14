@@ -1,28 +1,24 @@
 ;;; Character sets
 
-(defcustom sanityinc/force-default-font-for-symbols nil
-  "When non-nil, force Emacs to use your default font for symbols."
-  :type 'boolean)
+;; (defcustom sanityinc/force-default-font-for-symbols nil
+;;   "When non-nil, force Emacs to use your default font for symbols."
+;;   :type 'boolean)
 
-(defun sanityinc/maybe-use-default-font-for-symbols ()
-  "Force Emacs to render symbols using the default font, if so configured."
-  (when sanityinc/force-default-font-for-symbols
-    (set-fontset-font "fontset-default" 'symbol (face-attribute 'default :family))))
+;; (defun sanityinc/maybe-use-default-font-for-symbols ()
+;;   "Force Emacs to render symbols using the default font, if so configured."
+;;   (when sanityinc/force-default-font-for-symbols
+;;     (set-fontset-font "fontset-default" 'symbol (face-attribute 'default :family))))
 
-(add-hook 'after-init-hook 'sanityinc/maybe-use-default-font-for-symbols)
+;; (add-hook 'after-init-hook 'sanityinc/maybe-use-default-font-for-symbols)
 
 
 ;;; Changing font sizes
 
-(require-package 'default-text-scale)
-(global-set-key (kbd "C-M-=") 'default-text-scale-increase)
-(global-set-key (kbd "C-M--") 'default-text-scale-decrease)
+;; (require-package 'default-text-scale)
+;; (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
+;; (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-                    charset (font-spec :family "STHeiti")))
-(setq face-font-rescale-alist '(("STHeiti" . 1.2)))
-;;; (setq face-font-rescale-alist '(("Menlo" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))
-
+(require 'bhj-fonts)
+;;; From http://baohaojun.github.io/perfect-emacs-chinese-font.html
 
 (provide 'init-fonts)
