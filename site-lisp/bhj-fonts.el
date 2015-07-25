@@ -66,9 +66,9 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 (qiang-set-font
  bhj-english-fonts
- (if (file-exists-p "~/.config/system-config/emacs-font-size")
+ (if (file-exists-p "~/.emacs.d/font-size")
      (save-excursion
-       (find-file "~/.config/system-config/emacs-font-size")
+       (find-file "~/.emacs.d/font-size")
        (goto-char (point-min))
        (let ((monaco-font-size (read (current-buffer))))
          (kill-buffer (current-buffer))
