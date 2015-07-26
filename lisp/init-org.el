@@ -183,14 +183,6 @@ typical word processor."
                         ))))
           ("g" "GTD"
            ((agenda "" nil)
-            (tags "INBOX"
-                  ((org-agenda-overriding-header "Inbox")
-                   (org-tags-match-list-sublevels nil)))
-            (stuck ""
-                   ((org-agenda-overriding-header "Stuck Projects")
-                    (org-agenda-tags-todo-honor-ignore-options t)
-                    (org-tags-match-list-sublevels t)
-                    (org-agenda-todo-ignore-scheduled 'future)))
             (tags-todo "-INBOX/NEXT"
                        ((org-agenda-overriding-header "Next Actions")
                         (org-agenda-tags-todo-honor-ignore-options t)
@@ -199,23 +191,6 @@ typical word processor."
                         (org-tags-match-list-sublevels t)
                         (org-agenda-sorting-strategy
                          '(todo-state-down effort-up category-keep))))
-            (tags-todo ,active-project-match
-                       ((org-agenda-overriding-header "Projects")
-                        (org-tags-match-list-sublevels t)
-                        (org-agenda-sorting-strategy
-                         '(category-keep))))
-            (tags-todo "-INBOX/-NEXT"
-                       ((org-agenda-overriding-header "Orphaned Tasks")
-                        (org-agenda-tags-todo-honor-ignore-options t)
-                        (org-agenda-todo-ignore-scheduled 'future)
-                        ;; TODO: skip if a parent is a project
-                        (org-agenda-skip-function
-                         '(lambda ()
-                            (or (org-agenda-skip-subtree-if 'todo '("PROJECT" "HOLD" "WAITING"))
-                                (org-agenda-skip-subtree-if 'nottododo '("TODO")))))
-                        (org-tags-match-list-sublevels t)
-                        (org-agenda-sorting-strategy
-                         '(category-keep))))
 
             (tags-todo "/WAITING"
                        ((org-agenda-overriding-header "Waiting")
@@ -235,9 +210,36 @@ typical word processor."
                         (org-tags-match-list-sublevels nil)
                         (org-agenda-sorting-strategy
                          '(category-keep))))
-            ;; (tags-todo "-NEXT"
-            ;;            ((org-agenda-overriding-header "All other TODOs")
-            ;;             (org-match-list-sublevels t)))
+            (tags "INBOX"
+                  ((org-agenda-overriding-header "Inbox")
+                   (org-tags-match-list-sublevels nil)))
+            (tags-todo "-INBOX/-NEXT"
+                       ((org-agenda-overriding-header "Orphaned Tasks")
+                        (org-agenda-tags-todo-honor-ignore-options t)
+                        (org-agenda-todo-ignore-scheduled 'future)
+                        ;; TODO: skip if a parent is a project
+                        (org-agenda-skip-function
+                         '(lambda ()
+                            (or (org-agenda-skip-subtree-if 'todo '("PROJECT" "HOLD" "WAITING"))
+                                (org-agenda-skip-subtree-if 'nottododo '("TODO")))))
+                        (org-tags-match-list-sublevels t)
+                        (org-agenda-sorting-strategy
+                         '(category-keep))))
+
+            (stuck ""
+                   ((org-agenda-overriding-header "Stuck Projects")
+                    (org-agenda-tags-todo-honor-ignore-options t)
+                    (org-tags-match-list-sublevels t)
+                    (org-agenda-todo-ignore-scheduled 'future)))
+            (tags-todo ,active-project-match
+                       ((org-agenda-overriding-header "Projects")
+                        (org-tags-match-list-sublevels t)
+                        (org-agenda-sorting-strategy
+                         '(category-keep))))
+
+            (tags-todo "-NEXT"
+                       ((org-agenda-overriding-header "All other TODOs")
+                        (org-match-list-sublevels t)))
             )))))
 
 
