@@ -11,7 +11,7 @@
 
 ;; (add-hook 'after-init-hook 'sanityinc/maybe-use-default-font-for-symbols)
 
-
+
 ;;; Changing font sizes
 
 ;; (require-package 'default-text-scale)

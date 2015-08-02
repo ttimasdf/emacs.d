@@ -1,5 +1,3 @@
-ido.last
-recentf
 /url/cache
 /.emacs.desktop
 /auto-save-list
@@ -39,9 +37,13 @@ site-lisp/package/
 /eshell
 /.cask/
 /.sx/
-/.smex-items
 /org-clock-save.el
 /agenda_files
 .DS_Store
 /notes
 /font-size
+/ditaa*.jar
+/ido.last
+/recentf
+/viper
+
