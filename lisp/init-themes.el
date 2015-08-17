@@ -68,12 +68,14 @@ ignored: use `custom-enabled-themes' instead."
 (defun light ()
   "Activate a light color theme."
   (interactive)
-  (color-theme-sanityinc-solarized-light))
+  (color-theme-sanityinc-solarized-light)
+  (powerline-reset))
 
 (defun dark ()
   "Activate a dark color theme."
   (interactive)
-  (color-theme-sanityinc-solarized-dark))
+  (color-theme-sanityinc-solarized-dark)
+  (powerline-reset))
 
 
 (provide 'init-themes)
