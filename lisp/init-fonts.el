@@ -18,12 +18,10 @@
 ;; (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
 ;; (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 
-;;; Code: 
+;;; Code:
 
-(defun amt-fontcfg ()
-"From http://baohaojun.github.io/perfect-emacs-chinese-font.html"
-    (require 'bhj-fonts))
 
-(define-key global-map (kbd "C-c f") 'amt-fontcfg)
+(define-key global-map (kbd "C-c f") (lambda () (interactive) (require 'bhj-fonts)) )
+;;"From http://baohaojun.github.io/perfect-emacs-chinese-font.html"
 
 (provide 'init-fonts)
