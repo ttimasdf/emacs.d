@@ -195,7 +195,7 @@ typical word processor."
                         ;; TODO: skip if a parent is WAITING or HOLD
                         (org-tags-match-list-sublevels t)
                         (org-agenda-sorting-strategy
-                         '(todo-state-down effort-up category-keep))))
+                         '(todo-state-down effort-up priority-down))))
 
             (tags-todo "/WAITING"
                        ((org-agenda-overriding-header "Waiting")
@@ -203,12 +203,12 @@ typical word processor."
                         (org-agenda-todo-ignore-scheduled 'future)
                         (org-agenda-sorting-strategy
                          '(category-keep))))
-            (tags-todo "/APPT/DEFERED"
-                       ((org-agenda-overriding-header "Appointment")
-                        (org-agenda-tags-todo-honor-ignore-options t)
-                        (org-agenda-todo-ignore-scheduled 'future)
-                        (org-agenda-sorting-strategy
-                         '(category-keep))))
+            (todo "DEFERED|APPT"
+                  ((org-agenda-overriding-header "Appointment")
+                   (org-agenda-tags-todo-honor-ignore-options t)
+                   (org-agenda-todo-ignore-scheduled 'past)
+                   (org-agenda-sorting-strategy
+                    '(scheduled-up))))
             (tags-todo "-INBOX/HOLD"
                        ((org-agenda-overriding-header "On Hold")
                         ;; TODO: skip if a parent is WAITING or HOLD
@@ -231,11 +231,11 @@ typical word processor."
                         (org-agenda-sorting-strategy
                          '(category-keep))))
 
-            (stuck ""
-                   ((org-agenda-overriding-header "Stuck Projects")
-                    (org-agenda-tags-todo-honor-ignore-options t)
-                    (org-tags-match-list-sublevels t)
-                    (org-agenda-todo-ignore-scheduled 'future)))
+            ;; (stuck ""
+            ;;        ((org-agenda-overriding-header "Stuck Projects")
+            ;;         (org-agenda-tags-todo-honor-ignore-options t)
+            ;;         (org-tags-match-list-sublevels t)
+            ;;         (org-agenda-todo-ignore-scheduled 'future)))
             (tags-todo ,active-project-match
                        ((org-agenda-overriding-header "Projects")
                         (org-tags-match-list-sublevels t)

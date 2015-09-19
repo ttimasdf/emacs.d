@@ -20,8 +20,8 @@
 
 ;;; Code:
 
-
-(define-key global-map (kbd "C-c f") (lambda () (interactive) (require 'bhj-fonts)) )
+(require 'bhj-fonts)
+;;(define-key global-map (kbd "C-c f") (lambda () (interactive) (require 'bhj-fonts)) )
 ;;"From http://baohaojun.github.io/perfect-emacs-chinese-font.html"
 
 (provide 'init-fonts)

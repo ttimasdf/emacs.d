@@ -56,7 +56,9 @@ ignored: use `custom-enabled-themes' instead."
   (dolist (theme custom-enabled-themes)
     (unless (custom-theme-p theme)
       (load-theme theme)))
-  (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
+  (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes)))
+  (powerline-reset)
+  )
 
 (add-hook 'after-init-hook 'reapply-themes)
 
